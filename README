@@ -1,6 +1,3 @@
-Copy this **without adding any outer ```markdown fence** inside your `README.md`.
-Your file must start directly with `# MPEG...`.
-
 # MPEG Video Compression, Scrambling and Watermarking in MATLAB
 
 A MATLAB implementation of a simplified MPEG-style video processing pipeline, including **video decompression**, **motion compensation**, **motion-vector scrambling/descrambling**, and **watermark extraction**.
@@ -11,24 +8,26 @@ This project focuses on the core mechanisms behind MPEG video reconstruction and
 
 This project reconstructs a compressed video sequence from MPEG-like data using:
 
-* JPEG-like decompression with dequantization and inverse DCT
-* I-frame and P-frame reconstruction
-* Motion compensation using motion vectors
-* Error-frame correction
-* Motion-vector scrambling for visual protection
-* Descrambling using a secret key
-* Hidden message extraction from motion vectors
+- JPEG-like decompression with dequantization and inverse DCT
+- I-frame and P-frame reconstruction
+- Motion compensation using motion vectors
+- Error-frame correction
+- Motion-vector scrambling for visual protection
+- Descrambling using a secret key
+- Hidden message extraction from motion vectors
 
 The main entry point is:
 
-`src/mpeg_project.m`
+```text
+src/mpeg_project.m
+```
 
 ## Visual Overview
 
-The figures below are extracted from my project report for documentation purposes.
+The figures below are extracted from my project report for documentation purposes.  
 The report itself is not included in this repository.
 
-## MPEG Decompression Pipeline
+### MPEG Decompression Pipeline
 
 ![MPEG Decoder Pipeline](figures/mpeg_decoder_pipeline.png)
 
@@ -40,7 +39,7 @@ For each predicted frame:
 Reconstructed Frame = Predicted Frame + Error Frame
 ```
 
-## Motion Vectors and Macroblocks
+### Motion Vectors and Macroblocks
 
 ![Motion Vectors and Macroblocks](figures/motion_vectors_macroblocks.png)
 
@@ -53,7 +52,7 @@ Vx = horizontal displacement
 Vy = vertical displacement
 ```
 
-## JPEG-like Decompression
+### JPEG-like Decompression
 
 ![JPEG Decompression Pipeline](figures/jpeg_decompression_pipeline.png)
 
@@ -73,7 +72,7 @@ B = Bq × Q
 
 where `Bq` is the quantized block and `Q` is the quantization matrix.
 
-## GOP Structure
+### GOP Structure
 
 ![GOP Structure](figures/gop_structure.png)
 
@@ -85,11 +84,11 @@ IPPPPPPPPPPP
 
 This implementation uses:
 
-* 1 I-frame
-* 11 P-frames
-* No B-frames
+- 1 I-frame
+- 11 P-frames
+- No B-frames
 
-## Scrambling and Descrambling
+### Scrambling and Descrambling
 
 ![Scrambling Comparison](figures/scrambling_comparison.png)
 
@@ -113,7 +112,7 @@ Vy = Vy' - random(-f, f)
 
 Without the correct key and scrambling strength, the video cannot be correctly reconstructed.
 
-## Watermark Extraction
+### Watermark Extraction
 
 ![Hidden Message](figures/hidden_message.png)
 
@@ -174,15 +173,15 @@ mpeg-video-compression-scrambling-matlab/
 
 ## Source Files
 
-| File                 | Role                                                                                |
-| -------------------- | ----------------------------------------------------------------------------------- |
-| `mpeg_project.m`     | Main script for reconstruction, scrambling, descrambling, and watermark extraction  |
-| `video.m`            | MPEG reconstruction script using scrambled motion vectors                           |
-| `decomp.m`           | Decompression function: dequantization, IDCT, chroma resizing, YCbCr reconstruction |
-| `dequantification.m` | Applies dequantization using the quantization matrix                                |
-| `predite_embr.m`     | Predicts P-frames using scrambled motion vectors                                    |
-| `predit_desembr.m`   | Predicts P-frames after descrambling motion vectors                                 |
-| `EcrireVideo.m`      | Writes reconstructed frames to AVI video files                                      |
+| File | Role |
+|---|---|
+| `mpeg_project.m` | Main script for reconstruction, scrambling, descrambling, and watermark extraction |
+| `video.m` | MPEG reconstruction script using scrambled motion vectors |
+| `decomp.m` | Decompression function: dequantization, IDCT, chroma resizing, YCbCr reconstruction |
+| `dequantification.m` | Applies dequantization using the quantization matrix |
+| `predite_embr.m` | Predicts P-frames using scrambled motion vectors |
+| `predit_desembr.m` | Predicts P-frames after descrambling motion vectors |
+| `EcrireVideo.m` | Writes reconstructed frames to AVI video files |
 
 ## Required Data
 
@@ -207,8 +206,8 @@ mpeg-video-compression-scrambling-matlab/
 
 ## Requirements
 
-* MATLAB
-* Image Processing Toolbox
+- MATLAB
+- Image Processing Toolbox
 
 The project uses MATLAB functions such as:
 
@@ -253,12 +252,12 @@ Generated videos are ignored by Git and are not included in the repository.
 
 ## Implementation Notes
 
-* The implementation focuses on the MPEG reconstruction steps that affect visual quality.
-* Lossless decoding stages such as Huffman coding or RLE are not implemented.
-* Scrambling is applied to motion vectors, not directly to image pixels.
-* The hidden message is recovered from differences between marked and reference motion vectors.
-* The figures in `figures/` are extracted from my project report for documentation purposes.
-* The report itself is not included in the repository.
+- The implementation focuses on the MPEG reconstruction steps that affect visual quality.
+- Lossless decoding stages such as Huffman coding or RLE are not implemented.
+- Scrambling is applied to motion vectors, not directly to image pixels.
+- The hidden message is recovered from differences between marked and reference motion vectors.
+- The figures in `figures/` are extracted from my project report for documentation purposes.
+- The report itself is not included in the repository.
 
 ## Author
 
