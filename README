@@ -4,6 +4,8 @@ A MATLAB implementation of a simplified MPEG-style video processing pipeline, in
 
 The project focuses on the core mechanisms behind MPEG video reconstruction and video protection techniques.
 
+---
+
 ## Overview
 
 This project reconstructs a compressed video sequence from MPEG-like data using:
@@ -16,7 +18,13 @@ This project reconstructs a compressed video sequence from MPEG-like data using:
 - **Descrambling** using a secret key
 - **Hidden message extraction** from motion vectors
 
-The main entry point is `src/mpeg_project.m`.
+The main entry point is:
+
+```text
+src/mpeg_project.m
+```
+
+---
 
 ## Visual Overview
 
@@ -29,9 +37,13 @@ The report itself is not included in this repository.
 
 The MPEG reconstruction process uses reference frames, motion vectors, predicted frames, and error frames.
 
+For each predicted frame:
+
 ```text
 Reconstructed Frame = Predicted Frame + Error Frame
 ```
+
+---
 
 ### Motion Vectors and Macroblocks
 
@@ -44,23 +56,21 @@ Vx = horizontal displacement
 Vy = vertical displacement
 ```
 
+---
+
 ### JPEG-like Decompression
 
 ![JPEG Decompression Pipeline](figures/jpeg_decompression_pipeline.png)
 
-The JPEG-like decompression stage reconstructs image blocks using:
-
-1. Dequantization
-2. Inverse Discrete Cosine Transform
-3. Chroma resizing
-4. YCbCr reconstruction
-5. RGB conversion for visualization
+The JPEG-like decompression process involves dequantization and inverse DCT to reconstruct image blocks.
 
 ```text
 B = Bq × Q
 ```
 
 where `Bq` is the quantized block and `Q` is the quantization matrix.
+
+---
 
 ### GOP Structure
 
@@ -77,6 +87,8 @@ This implementation uses:
 - 1 I-frame
 - 11 P-frames
 - No B-frames
+
+---
 
 ### Scrambling and Descrambling
 
@@ -102,6 +114,8 @@ Vy = Vy' - random(-f, f)
 
 Without the correct key and scrambling strength, the video cannot be correctly reconstructed.
 
+---
+
 ### Watermark Extraction
 
 ![Hidden Message](figures/hidden_message.png)
@@ -114,6 +128,8 @@ The extraction process:
 2. Compares marked vectors with reference vectors
 3. Recovers binary values
 4. Converts binary data into ASCII characters
+
+---
 
 ## Processing Pipeline
 
@@ -136,6 +152,8 @@ Generate descrambled video
         ↓
 Extract hidden watermark message
 ```
+
+---
 
 ## Repository Structure
 
@@ -161,6 +179,8 @@ mpeg-video-compression-scrambling-matlab/
     └── hidden_message.png
 ```
 
+---
+
 ## Source Files
 
 | File | Role |
@@ -172,6 +192,8 @@ mpeg-video-compression-scrambling-matlab/
 | `predite_embr.m` | Predicts P-frames using scrambled motion vectors |
 | `predit_desembr.m` | Predicts P-frames after descrambling motion vectors |
 | `EcrireVideo.m` | Writes reconstructed frames to AVI video files |
+
+---
 
 ## Required Data
 
@@ -194,6 +216,8 @@ mpeg-video-compression-scrambling-matlab/
 └── figures/
 ```
 
+---
+
 ## Requirements
 
 - MATLAB
@@ -214,6 +238,8 @@ randperm
 bin2dec
 ```
 
+---
+
 ## How to Run
 
 From MATLAB, open the project folder and run:
@@ -228,6 +254,8 @@ Alternatively, add the `src/` folder to the MATLAB path and run:
 mpeg_project
 ```
 
+---
+
 ## Outputs
 
 The project generates reconstructed video files such as:
@@ -240,6 +268,8 @@ video_embrouillee.avi
 
 Generated videos are ignored by Git and are not included in the repository.
 
+---
+
 ## Implementation Notes
 
 - The implementation focuses on the MPEG reconstruction steps that affect visual quality.
@@ -248,9 +278,13 @@ Generated videos are ignored by Git and are not included in the repository.
 - The hidden message is recovered from differences between marked and reference motion vectors.
 - The figures in `figures/` are extracted from my project report for documentation purposes.
 
+---
+
 ## Author
 
 Montassar Laboudi
+
+---
 
 ## License
 
