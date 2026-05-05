@@ -2,7 +2,7 @@
 
 A MATLAB implementation of a simplified MPEG-style video processing pipeline, including **video decompression**, **motion compensation**, **motion-vector scrambling/descrambling**, and **watermark extraction**.
 
-This project focuses on the core mechanisms behind MPEG video reconstruction and video protection techniques.
+The project focuses on the core mechanisms behind MPEG video reconstruction and video protection techniques.
 
 ## Overview
 
@@ -16,11 +16,7 @@ This project reconstructs a compressed video sequence from MPEG-like data using:
 - Descrambling using a secret key
 - Hidden message extraction from motion vectors
 
-The main entry point is:
-
-```text
-src/mpeg_project.m
-```
+The main entry point is `src/mpeg_project.m`.
 
 ## Visual Overview
 
@@ -33,8 +29,6 @@ The report itself is not included in this repository.
 
 The MPEG reconstruction process uses reference frames, motion vectors, predicted frames, and error frames.
 
-For each predicted frame:
-
 ```text
 Reconstructed Frame = Predicted Frame + Error Frame
 ```
@@ -43,9 +37,7 @@ Reconstructed Frame = Predicted Frame + Error Frame
 
 ![Motion Vectors and Macroblocks](figures/motion_vectors_macroblocks.png)
 
-Motion compensation is performed block by block.
-
-Each frame is divided into macroblocks, and each macroblock is reconstructed using a motion vector:
+Motion compensation is performed block by block. Each frame is divided into macroblocks, and each macroblock is reconstructed using a motion vector.
 
 ```text
 Vx = horizontal displacement
@@ -63,8 +55,6 @@ The JPEG-like decompression stage reconstructs image blocks using:
 3. Chroma resizing
 4. YCbCr reconstruction
 5. RGB conversion for visualization
-
-The dequantization step is:
 
 ```text
 B = Bq × Q
@@ -92,7 +82,7 @@ This implementation uses:
 
 ![Scrambling Comparison](figures/scrambling_comparison.png)
 
-Scrambling is applied by perturbing the vertical component of motion vectors:
+Scrambling is applied by perturbing the vertical component of motion vectors.
 
 ```text
 Vy' = Vy + random(-f, f)
@@ -104,7 +94,7 @@ In this project:
 f = 8
 ```
 
-The pseudo-random perturbation is generated using a secret key. Descrambling regenerates the same perturbation and subtracts it:
+Descrambling regenerates the same pseudo-random perturbation using the secret key and subtracts it:
 
 ```text
 Vy = Vy' - random(-f, f)
@@ -257,7 +247,6 @@ Generated videos are ignored by Git and are not included in the repository.
 - Scrambling is applied to motion vectors, not directly to image pixels.
 - The hidden message is recovered from differences between marked and reference motion vectors.
 - The figures in `figures/` are extracted from my project report for documentation purposes.
-- The report itself is not included in the repository.
 
 ## Author
 
