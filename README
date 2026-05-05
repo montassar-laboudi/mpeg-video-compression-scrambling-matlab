@@ -1,4 +1,4 @@
-# MPEG Video Compression, Scrambling and Watermarking in MATLAB
+# MPEG Video Compression, Scrambling, and Watermarking in MATLAB
 
 A MATLAB implementation of a simplified MPEG-style video processing pipeline, including **video decompression**, **motion compensation**, **motion-vector scrambling/descrambling**, and **watermark extraction**.
 
@@ -8,19 +8,19 @@ The project focuses on the core mechanisms behind MPEG video reconstruction and 
 
 This project reconstructs a compressed video sequence from MPEG-like data using:
 
-- JPEG-like decompression with dequantization and inverse DCT
-- I-frame and P-frame reconstruction
-- Motion compensation using motion vectors
-- Error-frame correction
-- Motion-vector scrambling for visual protection
-- Descrambling using a secret key
-- Hidden message extraction from motion vectors
+- **JPEG-like decompression** with dequantization and inverse DCT
+- **I-frame and P-frame reconstruction**
+- **Motion compensation** using motion vectors
+- **Error-frame correction**
+- **Motion-vector scrambling** for visual protection
+- **Descrambling** using a secret key
+- **Hidden message extraction** from motion vectors
 
 The main entry point is `src/mpeg_project.m`.
 
 ## Visual Overview
 
-The figures below are extracted from my project report for documentation purposes.  
+The figures below are extracted from the project report.  
 The report itself is not included in this repository.
 
 ### MPEG Decompression Pipeline
