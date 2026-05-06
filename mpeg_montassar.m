@@ -1,4 +1,3 @@
-%% TP MPEG
 %% Montassar Laboudi
 %% M2 Signal & Télécommunications 2024/2025
 
