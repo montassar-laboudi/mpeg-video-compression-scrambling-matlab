@@ -253,7 +253,3 @@ These files are ignored by Git and not included.
 ## Author
 
 Montassar Laboudi
-
-## License
-
-This project is licensed under the MIT License.
